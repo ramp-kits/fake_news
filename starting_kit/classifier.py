@@ -6,7 +6,7 @@ from sklearn.base import BaseEstimator
 
 class Classifier(BaseEstimator):
     def __init__(self):
-        self.clf =  Pipeline([
+        self.clf = Pipeline([
             ('imputer', Imputer(strategy='median')),
             ('classifier', LogisticRegression(C=1.))
         ])

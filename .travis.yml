@@ -15,4 +15,4 @@ script:
     - flake8 *.py
     - python user_test_submission.py
 notifications:
-  email: false
+  email: true
