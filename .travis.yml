@@ -11,8 +11,7 @@ install:
     - conda install --yes --quiet numpy scipy matplotlib scikit-learn pandas
     - pip install -q flake8
 script:
-    - flake8 user_test_submission.py
-    - flake8 submissions/*/*.py
+    - flake8 *.py submissions/*/*.py
     - python user_test_submission.py
 notifications:
   email: true

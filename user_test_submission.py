@@ -2,8 +2,7 @@ import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
 from sklearn.metrics import roc_auc_score
 
-import submissions.starting_kit.feature_extractor as feature_extractor
-import submissions.starting_kit.classifier as classifier
+from submissions.starting_kit import classifier, feature_extractor
 
 
 train_filename = 'data/public/public_train.csv'
