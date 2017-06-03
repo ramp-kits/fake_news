@@ -8,10 +8,11 @@ before_install:
 install:
     - conda create -n testenv --yes pip python=3.6
     - source activate testenv
-    - conda install --yes --quiet numpy scipy matplotlib scikit-learn pandas
+    - conda install --yes --quiet numpy scipy matplotlib scikit-learn pandas jupyter seaborn
     - pip install -q flake8
 script:
     - flake8 *.py submissions/*/*.py
+    - jupyter nbconvert --execute titanic_starting_kit.ipynb
     - python user_test_submission.py
 notifications:
   email: true
