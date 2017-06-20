@@ -1,4 +1,4 @@
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.liner_model import LogisticRegression
 from sklearn.preprocessing import Imputer
 from sklearn.pipeline import Pipeline
 from sklearn.base import BaseEstimator
