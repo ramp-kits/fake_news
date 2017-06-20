@@ -22,7 +22,7 @@ script:
     - flake8 *.py submissions/*/*.py
     - jupyter nbconvert --execute titanic_starting_kit.ipynb --ExecutePreprocessor.kernel_name=$IPYTHON_KERNEL
     - coverage run ramp-workflow/rampwf/test_submission.py
-    - coverage run ramp-workflow/rampwf/test_submission.py submission=random_forest_10_10
+    - coverage run ramp-workflow/rampwf/test_submission.py submission=random_forest_20_5
 after_success:
     - codecov
 notifications:

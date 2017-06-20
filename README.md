@@ -19,3 +19,5 @@ test_submission submission=random_forest_20_5
 ```
 
 to test `random_forest_20_5` or any other submission in `submissions`.
+
+Get started on this RAMP with the [dedicated notebook](titanic_starting_kit.ipynb).
