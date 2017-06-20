@@ -16,3 +16,5 @@ build/
 dist/
 
 .nfs*
+
+*starting_kit.html
