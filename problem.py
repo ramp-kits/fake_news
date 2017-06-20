@@ -7,11 +7,9 @@ problem_title = 'Titanic survival classification'
 prediction_type = rw.prediction_types.multiclass
 workflow = rw.workflows.FeatureExtractorClassifier()
 prediction_labels = [0, 1]
-_target_column_name = 'Survived'
-_ignore_column_names = ['PassengerId']
 
 score_types = [
-    rw.score_types.AUC(name='auc', n_columns=len(prediction_labels)),
+    rw.score_types.ROCAUC(name='auc', n_columns=len(prediction_labels)),
     rw.score_types.Accuracy(name='acc', n_columns=len(prediction_labels)),
     rw.score_types.NegativeLogLikelihood(
         name='nll', n_columns=len(prediction_labels)),
@@ -21,6 +19,10 @@ score_types = [
 def get_cv(X, y):
     cv = StratifiedShuffleSplit(n_splits=8, test_size=0.2, random_state=57)
     return cv.split(X, y)
+
+
+_target_column_name = 'Survived'
+_ignore_column_names = ['PassengerId']
 
 
 def _read_data(path, f_name):
