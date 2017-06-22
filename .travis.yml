@@ -12,7 +12,6 @@ install:
     - conda create -n testenv --yes pip python=$PYTHON_VERSION
     - source activate testenv
     - conda install --yes --quiet numpy scipy matplotlib scikit-learn pandas jupyter seaborn
-    - pip install codecov
     - pip install -q flake8
     - git clone https://github.com/paris-saclay-cds/ramp-workflow.git
     - cd ramp-workflow
@@ -21,9 +20,7 @@ install:
 script:
     - flake8 *.py submissions/*/*.py
     - jupyter nbconvert --execute titanic_starting_kit.ipynb --ExecutePreprocessor.kernel_name=$IPYTHON_KERNEL
-    - coverage run ramp-workflow/rampwf/test_submission.py
-    - coverage run ramp-workflow/rampwf/test_submission.py submission=random_forest_20_5
-after_success:
-    - codecov
+    - ramp_test_submission
+    - ramp_test_submission --submission=random_forest_20_5
 notifications:
   email: true

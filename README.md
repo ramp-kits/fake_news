@@ -9,13 +9,13 @@ Go to [`ramp-worflow`](https://github.com/paris-saclay-cds/ramp-workflow) for mo
 Install ramp-workflow (rampwf), then execute
 
 ```
-test_submission
+ramp_test_submission
 ```
 
 to test the starting kit submission (`submissions/starting_kit`) and
 
 ```
-test_submission submission=random_forest_20_5
+ramp_test_submission --submission=random_forest_20_5
 ```
 
 to test `random_forest_20_5` or any other submission in `submissions`.
