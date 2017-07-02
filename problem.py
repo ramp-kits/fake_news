@@ -4,25 +4,25 @@ import rampwf as rw
 from sklearn.model_selection import StratifiedShuffleSplit
 
 problem_title = 'Titanic survival classification'
-prediction_type = rw.prediction_types.multiclass
+_target_column_name = 'Survived'
+_ignore_column_names = ['PassengerId']
+_prediction_label_names = [0, 1]
+Predictions = rw.prediction_types.multiclass.make_predictions_type(
+    label_names=_prediction_label_names)
 workflow = rw.workflows.FeatureExtractorClassifier()
-prediction_labels = [0, 1]
 
 score_types = [
-    rw.score_types.ROCAUC(name='auc', n_columns=len(prediction_labels)),
-    rw.score_types.Accuracy(name='acc', n_columns=len(prediction_labels)),
+    rw.score_types.ROCAUC(name='auc', n_columns=len(_prediction_label_names)),
+    rw.score_types.Accuracy(
+        name='acc', n_columns=len(_prediction_label_names)),
     rw.score_types.NegativeLogLikelihood(
-        name='nll', n_columns=len(prediction_labels)),
+        name='nll', n_columns=len(_prediction_label_names)),
 ]
 
 
 def get_cv(X, y):
     cv = StratifiedShuffleSplit(n_splits=8, test_size=0.2, random_state=57)
     return cv.split(X, y)
-
-
-_target_column_name = 'Survived'
-_ignore_column_names = ['PassengerId']
 
 
 def _read_data(path, f_name):
