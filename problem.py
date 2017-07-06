@@ -14,11 +14,9 @@ Predictions = rw.prediction_types.make_multiclass(
 workflow = rw.workflows.FeatureExtractorClassifier()
 
 score_types = [
-    rw.score_types.ROCAUC(name='auc', n_columns=len(_prediction_label_names)),
-    rw.score_types.Accuracy(
-        name='acc', n_columns=len(_prediction_label_names)),
-    rw.score_types.NegativeLogLikelihood(
-        name='nll', n_columns=len(_prediction_label_names)),
+    rw.score_types.ROCAUC(name='auc'),
+    rw.score_types.Accuracy(name='acc'),
+    rw.score_types.NegativeLogLikelihood(name='nll'),
 ]
 
 
