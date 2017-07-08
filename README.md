@@ -1,4 +1,4 @@
-# RAMP Starting on the Titanic dataset
+# RAMP starting kit on the Titanic dataset
 
 Authors: Alexandre Gramfort & Balazs Kegl
 
