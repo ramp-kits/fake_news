@@ -18,3 +18,4 @@ dist/
 .nfs*
 
 *starting_kit.html
+*.pkl
