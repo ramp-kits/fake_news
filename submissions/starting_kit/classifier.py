@@ -10,17 +10,11 @@ from keras.layers import Conv1D, GlobalMaxPooling1D, Input
 from keras.utils import np_utils
 from keras.layers.merge import concatenate
 
-from sklearn.metrics import classification_report
-from sklearn.metrics import precision_recall_fscore_support
-
-import numpy as np
-
-import matplotlib
-matplotlib.rcParams['backend'] = "Agg"
-#matplotlib.use('TkAgg')
-import keras
 from sklearn.base import BaseEstimator
 from sklearn import preprocessing
+
+import numpy as np
+import keras
 
 class Classifier(BaseEstimator):
     
@@ -63,14 +57,12 @@ class Classifier(BaseEstimator):
         
         sequence_sent_input = Input(shape=(self.MAX_SEQUENCE_LENGTH,), dtype='int32', name='sequence_words')
         embedded_sent = embedding_layer(sequence_sent_input)
-        print(embedded_sent.shape)
         convs = convolutions(embedded_sent)
         drop = Dropout(0.5, name='dropout_0.5')(convs)
         output = Dense(self.N_OUT, activation='softmax', name='softmax')(drop)
         model = Model(inputs=[sequence_sent_input], \
             outputs=[output])
             
-        model.summary()
         model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         
         self.clf = model
@@ -91,7 +83,7 @@ class Classifier(BaseEstimator):
                   shuffle=True, 
                   batch_size=150, 
                   verbose=1, 
-                  epochs=2)
+                  epochs=4)
 
     def predict_proba(self, X):
         return self.clf.predict(X)
