@@ -38,7 +38,6 @@ def strip_accents_unicode(s):
         s = unicode(s, 'utf-8')
     except NameError: # unicode is a default on python 3 
         pass
-    print type(s)
     s = unicodedata.normalize('NFD', s)
     s = s.encode('ascii', 'ignore')
     s = s.decode("utf-8")
