@@ -3,17 +3,16 @@
 import numpy as np
 import string, unicodedata
 
-import nltk
+from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.stem import SnowballStemmer
 from sklearn.feature_extraction import text
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.utils.validation import check_is_fitted
 from sklearn.preprocessing import OneHotEncoder
+
 from sklearn.preprocessing import MaxAbsScaler
-
-stopwords = nltk.download('stopwords')
-
+        
 MAX_SENT_LENGTH = 100
 MAX_SENTS = 2
 
