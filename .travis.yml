@@ -15,6 +15,7 @@ install:
     - pip install git+https://github.com/paris-saclay-cds/ramp-workflow.git
     - pip install -r requirements.txt
     - python -m nltk.downloader stopwords
+    - python -m nltk.downloader punkt
 script:
     - flake8 *.py submissions/*/*.py
     - jupyter nbconvert --execute fake_news_starting_kit.ipynb --ExecutePreprocessor.kernel_name=$IPYTHON_KERNEL --ExecutePreprocessor.timeout=600
