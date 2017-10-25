@@ -5,7 +5,7 @@ import rampwf as rw
 from sklearn.model_selection import StratifiedShuffleSplit
 
 problem_title = 'Fake News Detection'
-_target_column_name = 'label'
+_target_column_name = 'truth'
 _ignore_column_names = []
 _prediction_label_names = ['barely-true', 'false',
                            'half-true', 'mostly-true',
@@ -33,7 +33,7 @@ def _read_data(path, f_name):
                        names=['city', 'date', 'details', 'source', 
                               'statement', 'title', 'truth'])
 
-    y_array = data['truth'].values
+    y_array = data[_target_column_name].values
     X_df = data.drop([_target_column_name] + _ignore_column_names, axis=1)
 
     return X_df, y_array
