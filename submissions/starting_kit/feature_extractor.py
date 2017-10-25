@@ -81,7 +81,7 @@ class FeatureExtractor(TfidfVectorizer):
         self
         """
         self._feat = np.array([' '.join(
-            clean_str(text.strip_accents_unicode(dd)))
+            clean_str(strip_accents_unicode(dd)))
             for dd in X_df.statement])
 
         super(FeatureExtractor, self).fit(self._feat)
@@ -96,7 +96,7 @@ class FeatureExtractor(TfidfVectorizer):
 
     def transform(self, X_df):
 
-        X = np.array([' '.join(clean_str(text.strip_accents_unicode(dd)))
+        X = np.array([' '.join(clean_str(strip_accents_unicode(dd)))
                       for dd in X_df.statement])
 
         check_is_fitted(self, '_feat', 'The tfidf vector is not fitted')
