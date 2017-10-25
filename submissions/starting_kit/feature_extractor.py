@@ -27,13 +27,16 @@ def clean_str(sentence, stem=True):
         stemmer = SnowballStemmer('english')
         return list((filter(lambda x: x.lower() not in english_stopwords and
                             x.lower() not in punctuation,
-                            [stemmer.stem(t.lower()) for t in word_tokenize(sentence) if t.isalpha()])))
+                            [stemmer.stem(t.lower())
+                             for t in word_tokenize(sentence) if t.isalpha()])))
     print('>>', list((filter(lambda x: x.lower() not in english_stopwords and
                              x.lower() not in punctuation,
-                             [t.lower() for t in word_tokenize(sentence) if t.isalpha()]))))
+                             [t.lower() for t in word_tokenize(sentence)
+                              if t.isalpha()]))))
     return list((filter(lambda x: x.lower() not in english_stopwords and
                         x.lower() not in punctuation,
-                        [t.lower() for t in word_tokenize(sentence) if t.isalpha()])))
+                        [t.lower() for t in word_tokenize(sentence)
+                         if t.isalpha()])))
 
 
 def strip_accents_unicode(s):
@@ -78,8 +81,9 @@ class FeatureExtractor(TfidfVectorizer):
         -------
         self
         """
-        self._feat = np.array([' '.join(clean_str(text.strip_accents_unicode(dd)))
-                               for dd in X_df.statement])
+        self._feat = np.array([' '.join(
+            clean_str(text.strip_accents_unicode(dd)))
+            for dd in X_df.statement])
 
         super(FeatureExtractor, self).fit(self._feat)
 

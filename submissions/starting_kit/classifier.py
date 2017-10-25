@@ -17,8 +17,6 @@ class Classifier(BaseEstimator):
         self.clf = VotingClassifier(estimators=[
             ('lr', LogisticRegression(solver='liblinear', max_iter=200)),
             ('rf', RandomForestClassifier(random_state=1, n_estimators=500))], voting='soft')
-        #('gnb', GaussianNB())], voting='soft')
-        #('gbm', GradientBoostingClassifier(n_estimators=200))], voting='soft')
 
     def fit(self, X, y):
         self.clf.fit(X.todense(), y)
