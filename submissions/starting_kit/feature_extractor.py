@@ -53,7 +53,6 @@ class FeatureExtractor(TfidfVectorizer):
     """
 
     def __init__(self):
-
         super(FeatureExtractor, self).__init__(
             input='content', encoding='utf-8',
             decode_error='strict', strip_accents=None, lowercase=True,
@@ -69,6 +68,7 @@ class FeatureExtractor(TfidfVectorizer):
 
     def fit(self, X_df, y=None):
         """Learn a vocabulary dictionary of all tokens in the raw documents.
+
         Parameters
         ----------
         raw_documents : iterable
@@ -80,24 +80,16 @@ class FeatureExtractor(TfidfVectorizer):
         self._feat = np.array([' '.join(
             clean_str(strip_accents_unicode(dd)))
             for dd in X_df.statement])
-
         super(FeatureExtractor, self).fit(self._feat)
-
         return self
 
     def fit_transform(self, X_df, y=None):
-
         self.fit(X_df)
-
         return self.transform(self.X_df)
 
     def transform(self, X_df):
-
         X = np.array([' '.join(clean_str(strip_accents_unicode(dd)))
                       for dd in X_df.statement])
-
         check_is_fitted(self, '_feat', 'The tfidf vector is not fitted')
-
         X = super(FeatureExtractor, self).transform(X)
-
         return X

@@ -1,16 +1,11 @@
 # -*- coding: utf-8 -*-
 from sklearn.base import BaseEstimator
-from sklearn.ensemble import (RandomForestClassifier,
-                              VotingClassifier)
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 
 
 class Classifier(BaseEstimator):
     def __init__(self):
-        self.clf = VotingClassifier(estimators=[
-            ('lr', LogisticRegression(solver='liblinear', max_iter=200)),
-            ('rf', RandomForestClassifier(random_state=1, n_estimators=150))],
-            voting='soft')
+        self.clf = RandomForestClassifier()
 
     def fit(self, X, y):
         self.clf.fit(X.todense(), y)
