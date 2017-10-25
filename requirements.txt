@@ -5,3 +5,5 @@ nltk
 jupyter
 matplotlib
 seaborn
+plotly
+missingno
