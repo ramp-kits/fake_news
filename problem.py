@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
 import pandas as pd
+import numpy as np
 import rampwf as rw
-from sklearn.model_selection import StratifiedShuffleSplit
+from datetime import timedelta
 
 problem_title = 'Fake News Detection'
 _target_column_name = 'truth'
@@ -20,8 +21,17 @@ score_types = [
 
 
 def get_cv(X, y):
-    cv = StratifiedShuffleSplit(n_splits=8, test_size=0.2, random_state=57)
-    return cv.split(X, y)
+    """Slice folds by equal date intervals."""
+    date = pd.to_datetime(X['date'])
+    n_days = (date.max() - date.min()).days
+    n_splits = 8
+    fold_length = n_days // n_splits
+    fold_dates = [date.min() + timedelta(days=i * fold_length)
+                  for i in range(n_splits + 1)]
+    for i in range(n_splits):
+        test_is = (date >= fold_dates[i]) & (date < fold_dates[i + 1])
+        train_is = ~test_is
+        yield np.arange(len(date))[train_is], np.arange(len(date))[test_is]
 
 
 def _read_data(path, f_name):
