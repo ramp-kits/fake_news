@@ -7,9 +7,9 @@ from sklearn.model_selection import StratifiedShuffleSplit
 problem_title = 'Fake News Detection'
 _target_column_name = 'truth'
 _ignore_column_names = []
-_prediction_label_names = ['barely-true', 'false',
-                           'half-true', 'mostly-true',
-                           'pants-fire', 'true']
+_prediction_label_names = ['False', 'Full Flop', 'Half Flip', 
+                           'Half-True', 'Mostly False', 'Mostly True', 
+                           'No Flip', 'Pants on Fire!', 'True']
 # A type (class) which will be used to create wrapper objects for y_pred
 Predictions = rw.prediction_types.make_multiclass(
     label_names=_prediction_label_names)
