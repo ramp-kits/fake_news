@@ -3,3 +3,5 @@ scikit-learn
 pandas
 nltk
 jupyter
+matplotlib
+seaborn
