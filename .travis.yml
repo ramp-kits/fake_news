@@ -18,6 +18,6 @@ install:
 script:
     - flake8 *.py submissions/*/*.py
 #    - jupyter nbconvert --execute fake_news_starting_kit.ipynb --ExecutePreprocessor.kernel_name=$IPYTHON_KERNEL
-    - ramp_test_submission
+    - ramp_test_submission --quick-test
 notifications:
   email: true

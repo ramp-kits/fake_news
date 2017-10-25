@@ -28,7 +28,11 @@ def _read_data(path, f_name):
     data = pd.read_csv(os.path.join(path, 'data', f_name), sep='\t')
     y_array = data[_target_column_name].values
     X_df = data.drop(_target_column_name, axis=1)
-    return X_df, y_array
+    test = os.getenv('RAMP_TEST_MODE', 0)
+    if test:
+        return X_df[:100], y_array[:100]
+    else:
+        return X_df, y_array
 
 
 def get_train_data(path='.'):
