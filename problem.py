@@ -7,8 +7,8 @@ from sklearn.model_selection import StratifiedShuffleSplit
 problem_title = 'Fake News Detection'
 _target_column_name = 'truth'
 _ignore_column_names = []
-_prediction_label_names = ['False', 'Full Flop', 'Half Flip', 
-                           'Half-True', 'Mostly False', 'Mostly True', 
+_prediction_label_names = ['False', 'Full Flop', 'Half Flip',
+                           'Half-True', 'Mostly False', 'Mostly True',
                            'No Flip', 'Pants on Fire!', 'True']
 # A type (class) which will be used to create wrapper objects for y_pred
 Predictions = rw.prediction_types.make_multiclass(
@@ -30,7 +30,7 @@ def get_cv(X, y):
 def _read_data(path, f_name):
 
     data = pd.read_csv(os.path.join(path, 'data', f_name), sep='\t',
-                       names=['city', 'date', 'details', 'source', 
+                       names=['city', 'date', 'details', 'source',
                               'statement', 'title', 'truth'])
 
     y_array = data[_target_column_name].values

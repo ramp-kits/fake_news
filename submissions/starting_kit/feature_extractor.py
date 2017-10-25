@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 import numpy as np
 import string
@@ -30,10 +31,7 @@ def clean_str(sentence, stem=True):
                             [stemmer.stem(t.lower())
                              for t in word_tokenize(sentence)
                              if t.isalpha()])))
-    print('>>', list((filter(lambda x: x.lower() not in english_stopwords and
-                             x.lower() not in punctuation,
-                             [t.lower() for t in word_tokenize(sentence)
-                              if t.isalpha()]))))
+
     return list((filter(lambda x: x.lower() not in english_stopwords and
                         x.lower() not in punctuation,
                         [t.lower() for t in word_tokenize(sentence)
