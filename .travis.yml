@@ -16,12 +16,13 @@ install:
     - git clone https://github.com/paris-saclay-cds/ramp-workflow.git
     - cd ramp-workflow
     - python setup.py install
-    - source install_requirements.sh
+    - pip install -r requirements.txt
+    - python -m nltk.downloader popular
     - cd ..
 script:
     - flake8 *.py submissions/*/*.py
-    - jupyter nbconvert --execute titanic_starting_kit.ipynb --ExecutePreprocessor.kernel_name=$IPYTHON_KERNEL
+    - jupyter nbconvert --execute fake_news_starting_kit.ipynb --ExecutePreprocessor.kernel_name=$IPYTHON_KERNEL
     - ramp_test_submission
-    - ramp_test_submission --submission=random_forest_20_5
+    - ramp_test_submission --submission=starting_kit
 notifications:
   email: true
