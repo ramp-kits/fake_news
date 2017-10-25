@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
-
-import numpy as np
-np.random.seed(1337)  # for reproducibility
-
 from sklearn.base import BaseEstimator
-
-import numpy as np
-
 from sklearn.ensemble import (RandomForestClassifier,
                               VotingClassifier)
 from sklearn.linear_model import LogisticRegression
