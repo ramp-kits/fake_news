@@ -5,7 +5,7 @@ import numpy as np
 import rampwf as rw
 from datetime import timedelta
 
-problem_title = 'Fake news classification'
+problem_title = 'Fake news: classify statements of public figures'
 _target_column_name = 'truth'
 _prediction_label_names = [0, 1, 2, 3, 4, 5]
 # A type (class) which will be used to create wrapper objects for y_pred
