@@ -5,7 +5,7 @@ import numpy as np
 import rampwf as rw
 from datetime import timedelta
 
-problem_title = 'Fake News Detection'
+problem_title = 'Fake news classification'
 _target_column_name = 'truth'
 _prediction_label_names = [0, 1, 2, 3, 4, 5]
 # A type (class) which will be used to create wrapper objects for y_pred
@@ -15,8 +15,30 @@ Predictions = rw.prediction_types.make_multiclass(
 # An object implementing the workflow
 workflow = rw.workflows.FeatureExtractorClassifier()
 
+soft_score_matrix = np.array([
+    [1, 0.8, 0, 0, 0, 0],
+    [0.4, 1, 0.4, 0, 0, 0],
+    [0, 0.4, 1, 0.4, 0, 0],
+    [0, 0, 0.4, 1, 0.4, 0],
+    [0, 0, 0, 0.4, 1, 0.4],
+    [0, 0, 0, 0, 0.8, 1],
+])
+
+true_false_score_matrix = np.array([
+    [1, 1, 1, 0, 0, 0],
+    [1, 1, 1, 0, 0, 0],
+    [1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 1, 1, 1],
+    [0, 0, 0, 1, 1, 1],
+    [0, 0, 0, 1, 1, 1],
+])
+
 score_types = [
-    rw.score_types.Accuracy(name='acc'),
+    rw.score_types.SoftAccuracy(
+        name='sacc', score_matrix=soft_score_matrix, precision=3),
+    rw.score_types.Accuracy(name='acc', precision=3),
+    rw.score_types.SoftAccuracy(
+        name='tfacc', score_matrix=true_false_score_matrix, precision=3),
 ]
 
 
