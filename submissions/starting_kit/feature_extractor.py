@@ -9,7 +9,6 @@ from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.stem import SnowballStemmer
 from sklearn.utils.validation import check_is_fitted
-from sklearn.preprocessing import OneHotEncoder, MaxAbsScaler
 
 
 def clean_str(sentence, stem=True):
@@ -46,7 +45,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 class FeatureExtractor(TfidfVectorizer):
-    """Convert a collection of raw documents to a matrix of TF-IDF features. """
+    """Convert a collection of raw docs to a matrix of TF-IDF features. """
 
     def __init__(self):
         super(FeatureExtractor, self).__init__(
