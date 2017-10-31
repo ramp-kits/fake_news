@@ -8,12 +8,8 @@ import unicodedata
 from nltk.corpus import stopwords
 from nltk import word_tokenize
 from nltk.stem import SnowballStemmer
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.utils.validation import check_is_fitted
 from sklearn.preprocessing import OneHotEncoder, MaxAbsScaler
-
-MAX_SENT_LENGTH = 100
-MAX_SENTS = 2
 
 
 def clean_str(sentence, stem=True):
@@ -46,11 +42,11 @@ def strip_accents_unicode(s):
     return str(s)
 
 
-class FeatureExtractor(TfidfVectorizer):
-    """Convert a collection of raw documents to a matrix of TF-IDF features.
+from sklearn.feature_extraction.text import TfidfVectorizer
 
-    Equivalent to CountVectorizer followed by TfidfTransformer.
-    """
+
+class FeatureExtractor(TfidfVectorizer):
+    """Convert a collection of raw documents to a matrix of TF-IDF features. """
 
     def __init__(self):
         super(FeatureExtractor, self).__init__(
@@ -62,9 +58,6 @@ class FeatureExtractor(TfidfVectorizer):
             max_features=None, vocabulary=None, binary=False,
             dtype=np.int64, norm='l2', use_idf=True, smooth_idf=True,
             sublinear_tf=False)
-
-        self._one_hot = OneHotEncoder()
-        self._scaler = MaxAbsScaler()
 
     def fit(self, X_df, y=None):
         """Learn a vocabulary dictionary of all tokens in the raw documents.
