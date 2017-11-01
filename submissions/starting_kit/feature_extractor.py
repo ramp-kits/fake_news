@@ -1,25 +1,4 @@
 # -*- coding: utf-8 -*-
-#
-#  Feature extractor
-#  =================
-#
-#  The ``FeatureExtractor`` class us used to extract features
-#  from text documents. It returns a sparse TF-IDF matrix.
-#
-#  The main approaches to customize the feature extraction
-#  are,
-#
-#  1. Changing the initialization parameters of TfidfVectorizer
-#     in the ``__init__`` function (see scikit-learn documentation).
-#     This includes for instance, word n-grams, character n-grams,
-#     other IDF weighting schemes etc.
-#  2. Changing the document preprocessing in the
-#     ``document_preprocessor`` function. This includes e.g. unicode
-#     normalization.
-#  3. Changing the token processing in the ``token_processor``
-#     function. This includes e.g. stemming, lemmatization etc.
-#     See NLTK package.
-
 
 from __future__ import unicode_literals
 
@@ -56,7 +35,8 @@ class FeatureExtractor(TfidfVectorizer):
     def __init__(self):
         # see ``TfidfVectorizer`` documentation for other feature
         # extraction parameters.
-        super(FeatureExtractor, self).__init__(analyzer='word')
+        super(FeatureExtractor, self).__init__(
+                analyzer='word', preprocessor=document_preprocessor)
 
     def fit(self, X_df, y=None):
         """Learn a vocabulary dictionary of all tokens in the raw documents.
