@@ -46,7 +46,7 @@ def get_cv(X, y):
     """Slice folds by equal date intervals."""
     date = pd.to_datetime(X['date'])
     n_days = (date.max() - date.min()).days
-    n_splits = 8
+    n_splits = 5
     fold_length = n_days // n_splits
     fold_dates = [date.min() + timedelta(days=i * fold_length)
                   for i in range(n_splits + 1)]
