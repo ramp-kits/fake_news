@@ -52,6 +52,7 @@ def get_cv(X, y):
                   for i in range(n_splits + 1)]
     for i in range(n_splits):
         test_is = (date >= fold_dates[i]) & (date < fold_dates[i + 1])
+        test_is = test_is.values
         train_is = ~test_is
         yield np.arange(len(date))[train_is], np.arange(len(date))[test_is]
 
