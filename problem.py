@@ -13,7 +13,7 @@ Predictions = rw.prediction_types.make_multiclass(
     label_names=_prediction_label_names)
 
 # An object implementing the workflow
-workflow = rw.workflows.FeatureExtractorClassifier()
+workflow = rw.workflows.Estimator()
 
 soft_score_matrix = np.array([
     [1, 0.8, 0, 0, 0, 0],

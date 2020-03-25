@@ -1,0 +1,13 @@
+name: ramp-fake-news
+channels:
+  - defaults
+dependencies:
+  - pip
+  - numpy
+  - scikit-learn
+  - pandas
+  - nltk
+  - jupyter
+  - matplotlib
+  - pip:
+    - ramp-workflow

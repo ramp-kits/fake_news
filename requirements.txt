@@ -4,6 +4,4 @@ pandas
 nltk
 jupyter
 matplotlib
-seaborn
-plotly
-missingno
+ramp-workflow
