@@ -10,7 +10,7 @@ Authors: Emanuela Boros (LIMSI/CNRS), Balázs Kégl (LAL/CNRS), Roman Yurchak (S
 ### Install
 
 To run a submission and the notebook you will need the dependencies listed
-in `requirements.txt`. You can install install the dependencies with the
+in `requirements.txt`. You can install the dependencies with the
 following command-line:
 
 ```bash
