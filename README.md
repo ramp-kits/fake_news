@@ -3,26 +3,46 @@
 Fake news is intentionally written to mislead readers to believe false information, which makes it difficult and nontrivial to detect based on news content. Given the prevalence of this
 new phenomenon, "Fake news" was even named the word of the year in 2016.
 
-Authors: 
+Authors: Emanuela Boros (LIMSI/CNRS), Balázs Kégl (LAL/CNRS), Roman Yurchak (Symerio)
 
-[![Build Status](https://travis-ci.org/ramp-kits/fake_news.svg?branch=master)](https://travis-ci.org/ramp-kits/fake_news)
+## Getting started
 
-Go to [`ramp-worflow`](https://github.com/paris-saclay-cds/ramp-workflow) for more help on the [RAMP](http:www.ramp.studio) ecosystem.
+### Install
 
-Install ramp-workflow (rampwf), then execute
+To run a submission and the notebook you will need the dependencies listed
+in `requirements.txt`. You can install the dependencies with the
+following command-line:
 
-```
-ramp_test_submission
-```
-
-to test the starting kit submission (`submissions/starting_kit`) and
-
-```
-ramp_test_submission --submission=starting_kit
+```bash
+pip install -U -r requirements.txt
 ```
 
-to test `starting_kit` or any other submission in `submissions`.
+If you are using `conda`, we provide an `environment.yml` file for similar
+usage.
 
-Get started on this RAMP with the [dedicated notebook](fake_news_starting_kit.ipynb).
+### Challenge description
 
+Get started on this RAMP with the
+[dedicated notebook](fake_news_starting_kit.ipynb).
 
+### Test a submission
+
+The submissions need to be located in the `submissions` folder. For instance
+for `my_submission`, it should be located in `submissions/my_submission`.
+
+To run a specific submission, you can use the `ramp-test` command line:
+
+```bash
+ramp-test --submission my_submission
+```
+
+You can get more information regarding this command line:
+
+```bash
+ramp-test --help
+```
+
+### To go further
+
+You can find more information regarding `ramp-workflow` and RAMP studio submissions in the
+[dedicated documentation](https://paris-saclay-cds.github.io/ramp-docs/ramp-workflow/stable/using_kits.html)
